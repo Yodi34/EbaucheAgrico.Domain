@@ -7,7 +7,7 @@ using System.Text;
 
 namespace EbaucheAgrico.ApplicationDomain.CasUsages
 {
-    internal class ApplicationModifierProduitBdd : IApplicationModifierProduitBdd
+    public class ApplicationModifierProduitBdd : IApplicationModifierProduitBdd
     {
         private readonly IModifierListeProduitBdd _PortModifierProduit;
 
@@ -16,23 +16,28 @@ namespace EbaucheAgrico.ApplicationDomain.CasUsages
             this._PortModifierProduit = portModificationProduit;
         }
 
-        internal void AjouterUnProduit(Produit parametreProduitEntree)
+        public void AjouterUnProduit(Produit parametreProduitEntree)
         {
             Produit produitAModifier = parametreProduitEntree;
-            AjouterSEnFinDeMot(produitAModifier.Nom);
-            if (!ExisteDejaEnBdd(produitAModifier.Id))
-            {
+            produitAModifier.Nom = AjouterSEnFinDeMot(produitAModifier.Nom);
+
+            //if (!ExisteDejaEnBdd(produitAModifier.Id))
+            //{
                 produitAModifier.Prix = produitAModifier.Prix < 0 ? 0 : produitAModifier.Prix;
                 this._PortModifierProduit.AjouterUnProduit(produitAModifier);
-            }
+            //}
         }
 
-        private static void AjouterSEnFinDeMot(string s)
+        private static string AjouterSEnFinDeMot(string s)
         {
             var derniereLettre = s.ToLower().Last();
             if(derniereLettre is not 's')
             {
-                s += 's';
+                return s += 's';
+            }
+            else
+            {
+                return s;
             }
         }
 

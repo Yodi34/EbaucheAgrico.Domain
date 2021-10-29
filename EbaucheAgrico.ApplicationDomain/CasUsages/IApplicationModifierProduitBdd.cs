@@ -1,6 +1,11 @@
-﻿namespace EbaucheAgrico.ApplicationDomain.CasUsages
+﻿using EbaucheAgrico.Domain;
+
+namespace EbaucheAgrico.ApplicationDomain.CasUsages
 {
-    internal interface IApplicationModifierProduitBdd
+    public interface IApplicationModifierProduitBdd
     {
+        void AjouterUnProduit(Produit produit);
+        //void ModifierUnProduits(Produit produit);
+        //void SupprimerUnProduits(int id);
     }
 }

@@ -7,23 +7,27 @@ namespace EbaucheAgrico.Infrastructure.AccesDonnees
 {
     public class BddMok
     {
-        public List<ProduitModelMok> ListeProduitBdd { get; set; } = new ();
-        internal List<KeyValuePair<int,int>> ListeTest { get; set; } = new();
+        public List<ProduitModelMok> ListeProduitBdd { get; set; } = RenvoyerListeProduit();
 
 
         public BddMok()
         {
-
+            //this.ListeProduitBdd.Add(new ProduitModelMok(1, 4, "Tomate"));
+            //this.ListeProduitBdd.Add(new ProduitModelMok(2, 2, "Courgette"));
+            //this.ListeProduitBdd.Add(new ProduitModelMok(3, 2.5, "Orange"));
+            //this.ListeProduitBdd.Add(new ProduitModelMok(4, 2, "Pomme"));
+            //this.ListeProduitBdd = RenvoyerListeProduit();
 
         }
 
-        public List<ProduitModelMok> RenvoyerListeProduit()
+        private static List<ProduitModelMok> RenvoyerListeProduit()
         {
-            this.ListeProduitBdd.Add(new ProduitModelMok(1, 4, "Tomate"));
-            this.ListeProduitBdd.Add(new ProduitModelMok(2, 2, "Courgette"));
-            this.ListeProduitBdd.Add(new ProduitModelMok(3, 2.5, "Orange"));
-            this.ListeProduitBdd.Add(new ProduitModelMok(4, 2, "Pomme"));
-            return this.ListeProduitBdd;
+            List<ProduitModelMok> ListeProduitBdd = new();
+            ListeProduitBdd.Add(new ProduitModelMok(1, 4, "Tomate"));
+            ListeProduitBdd.Add(new ProduitModelMok(2, 2, "Courgette"));
+            ListeProduitBdd.Add(new ProduitModelMok(3, 2.5, "Orange"));
+            ListeProduitBdd.Add(new ProduitModelMok(4, 2, "Pomme"));
+            return ListeProduitBdd;
         }
 
         //internal void AjouterUnProduitDansLaListe(ProduitModelMok produit)

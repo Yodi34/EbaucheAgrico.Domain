@@ -6,5 +6,6 @@ namespace EbaucheAgrico.ApplicationDomain.AdaptateurEntre
     public interface IAdaptateurWeb
     {
         List<Produit> ObtenirListeProduits();
+        void AjouterUnProduit(Produit produit);
     }
 }

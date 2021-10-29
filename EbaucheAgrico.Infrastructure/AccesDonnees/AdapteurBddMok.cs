@@ -2,8 +2,7 @@
 using EbaucheAgrico.Domain;
 using System;
 using System.Collections.Generic;
-
-
+using System.Linq;
 
 namespace EbaucheAgrico.Infrastructure.AccesDonnees
 {
@@ -19,7 +18,7 @@ namespace EbaucheAgrico.Infrastructure.AccesDonnees
 
         public List<Produit> ObtenirListeProduits()
         {
-            List<ProduitModelMok> liste = this._bddMok.RenvoyerListeProduit();
+            List<ProduitModelMok> liste = this._bddMok.ListeProduitBdd;
 
             List<Produit> listeTransorme = new();
             foreach (var produit in liste)
@@ -57,6 +56,8 @@ namespace EbaucheAgrico.Infrastructure.AccesDonnees
         {
             try
             {
+                int maxIdBdd = this._bddMok.ListeProduitBdd.Max(id => id.Id);
+                produit.Id = maxIdBdd +1;
                 this._bddMok.ListeProduitBdd.Add(new(produit.Id, produit.Prix, produit.Nom));
             }
             catch (Exception)

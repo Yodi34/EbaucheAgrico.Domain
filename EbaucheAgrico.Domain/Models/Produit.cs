@@ -22,6 +22,17 @@ namespace EbaucheAgrico.Domain
 
         public Produit(){}
 
+        public Produit(string nom, double prix)
+        {
+            this.Nom = nom;
+            this.Prix = prix;
+        }
+        public Produit(int id, string nom, double prix)
+        {
+            this.Id = id;
+            this.Nom = nom;
+            this.Prix = prix;
+        }
     }
 
 }
